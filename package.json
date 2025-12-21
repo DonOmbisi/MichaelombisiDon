@@ -1,9 +1,9 @@
 {
-  "name": "portfolio",
-  "homepage": "https://hamishw.com",
-  "description": "Portfolio site for Hamish Williams",
-  "repository": "https://github.com/HamishMW/portfolio.git",
-  "author": "Hamish Williams",
+  "name": "don-ombisi-portfolio",
+  "homepage": "https://donombisi.com",
+  "description": "Portfolio site for Don Michael Ombisi",
+  "repository": "https://github.com/donombisi/portfolio.git",
+  "author": "Don Michael Ombisi",
   "sideEffects": false,
   "type": "module",
   "scripts": {
@@ -38,12 +38,12 @@
     "@mdx-js/rollup": "^3.0.1",
     "@remix-run/dev": "^2.7.1",
     "@storybook/addon-a11y": "^7.6.17",
-    "@storybook/addon-essentials": "^7.6.17",
+    "@storybook/addon-essentials": "^8.6.14",
     "@storybook/addon-interactions": "^7.6.17",
     "@storybook/addon-links": "^7.6.17",
-    "@storybook/blocks": "^7.6.17",
-    "@storybook/react": "^7.6.17",
-    "@storybook/react-vite": "^7.6.17",
+    "@storybook/blocks": "^8.6.14",
+    "@storybook/react": "^10.1.9",
+    "@storybook/react-vite": "^10.1.9",
     "@storybook/test": "^7.6.17",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
@@ -58,10 +58,10 @@
     "prop-types": "^15.8.1",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^4.0.0",
-    "storybook": "^7.6.17",
+    "storybook": "^10.1.9",
     "vite": "^5.1.0",
     "vite-jsconfig-paths": "^2.0.1",
-    "wrangler": "^3.24.0"
+    "wrangler": "^4.55.0"
   },
   "engines": {
     "node": ">=19.9.0"

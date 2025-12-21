@@ -18,6 +18,7 @@ import { Error } from '~/layouts/error';
 import { VisuallyHidden } from '~/components/visually-hidden';
 import { Navbar } from '~/layouts/navbar';
 import { Progress } from '~/components/progress';
+import { PerformanceMonitor } from '~/components/performance-monitor/performance-monitor';
 import config from '~/config.json';
 import styles from './root.module.css';
 import './reset.module.css';
@@ -44,6 +45,18 @@ export const links = () => [
   { rel: 'shortcut_icon', href: '/shortcut.png', type: 'image/png', sizes: '64x64' },
   { rel: 'apple-touch-icon', href: '/icon-256.png', sizes: '256x256' },
   { rel: 'author', href: '/humans.txt', type: 'text/plain' },
+  // Prefetch critical routes
+  { rel: 'prefetch', href: '/projects', as: 'document' },
+  { rel: 'prefetch', href: '/experience', as: 'document' },
+  { rel: 'prefetch', href: '/resume', as: 'document' },
+  // Prefetch critical images
+  { rel: 'prefetch', href: '/host3-project.webp', as: 'image' },
+  { rel: 'prefetch', href: '/aura3-project.webp', as: 'image' },
+  { rel: 'prefetch', href: '/aqua-horizon-project.webp', as: 'image' },
+  // DNS prefetch for external domains
+  { rel: 'dns-prefetch', href: '//vercel.app' },
+  { rel: 'dns-prefetch', href: '//github.com' },
+  { rel: 'dns-prefetch', href: '//render.com' },
 ];
 
 export const loader = async ({ request, context }) => {
@@ -118,6 +131,7 @@ export default function App() {
       </head>
       <body data-theme={theme}>
         <ThemeProvider theme={theme} toggleTheme={toggleTheme}>
+          <PerformanceMonitor />
           <Progress />
           <VisuallyHidden showOnFocus as="a" className={styles.skip} href="#main-content">
             Skip to main content

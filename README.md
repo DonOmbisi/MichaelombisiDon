@@ -1,13 +1,34 @@
 <p align="center">
   <img src="/public/favicon.svg" width="50" alt="Logo" />
 </p>
-<h1 align="center">Personal portfolio</h1>
+<h1 align="center">Don Michael Ombisi - Portfolio</h1>
 
-[![Site preview](/public/site-preview.png)](https://hamishw.com)
+[![Site preview](/public/site-preview.png)](https://donombisi.com)
 
-My design portfolio to showcase a few projects. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/). View the [live site](https://hamishw.com) or check out a live version of the [components storybook](https://storybook.hamishw.com).
+My professional portfolio showcasing innovative projects in software engineering, data science, and cybersecurity. Built with [Remix](https://remix.run/), [Three.js](https://threejs.org/), and [Framer Motion](https://www.framer.com/motion/). View the [live site](https://donombisi.com) or check out a live version of the [components storybook](https://storybook.donombisi.com).
 
-## Install & run
+## Featured Projects
+
+- **Host3**: Web3-based hosting platform with React, Solidity, and IPFS
+- **Aura3.0**: AI therapist powered by NLP and blockchain technology
+- **Aqua-Horizon**: Citizen science platform for water quality monitoring
+- **Flood-Analyzer**: Comprehensive flood risk assessment system
+- **Drug-research**: ML-powered drug discovery and protein-binding prediction
+- **ThreadcraftAI**: AI content generation tool with GPT models
+- **Lingua-Speak**: Real-time translation app supporting 20+ languages
+- **LiveDocs**: Collaborative text editor with WebSockets
+- **AidRoute**: AI-powered humanitarian logistics platform
+- **Safariverse**: Immersive 3D platform bridging African cultures
+
+## Technical Skills
+
+**Programming/Web**: Python, JavaScript, TypeScript, C++, SQL, HTML/CSS, React.js, Node.js
+**Data Science & ML**: TensorFlow, PyTorch, scikit-learn, spaCy, Apache Spark, Hadoop
+**Databases**: MongoDB, MySQL, PostgreSQL
+**Cloud & DevOps**: AWS, GCP, Azure, Docker, Kubernetes, GitHub Actions, Jenkins, Linux
+**Other**: Quantum Computing, Network Security, Figma, Adobe XD
+
+## Install & Run
 
 Make sure you have nodejs `19.9.0` or higher and npm `9.6.3` or higher installed. Install dependencies with:
 
@@ -29,28 +50,18 @@ npm run dev:storybook
 
 ## Deployment
 
-I've set up the site using Cloudflare for hosting. Deploy the site to Cloudflare Pages:
+Deploy the site to Cloudflare Pages:
 
 ```bash
 npm run deploy
 ```
 
+## Contact
+
+- **Email**: ombisimichael@gmail.com
+- **LinkedIn**: [linkedin.com/in/donombisi](https://linkedin.com/in/donombisi)
+- **GitHub**: [github.com/donombisi](https://github.com/donombisi)
+
 ## Permissions
 
-I'm cool with anyone using the code or parts of the code for their own site, it is open source so people can learn from it and adapt it. However, I would encourage you to modify the theme and components it to make it your own. If you are using the site's design largely unmodified, I'd appreciate being credited as the designer of the website.
-
-I do not give permission to present any of my projects as your own (this is being actively used as my portfolio site and these are my real projects I've worked on).
-
-## FAQs
-
-<details>
-  <summary>How do I change the color on the <code>DisplacementSphere</code> (blobby rotating thing in the background).</summary>
-  
-  You'll need to edit the fragment shader. [Check out this issue for more details](https://github.com/HamishMW/portfolio/issues/19#issuecomment-870996615).
-</details>
-
-<details>
-  <summary>How do I get the contact form to work?</summary>
-  
-  To get the contact form working create an AWS account and set up SES (Simple Email service). Then plug in your details into `.dev.vars.example` and rename it to `.dev.vars`. You'll also need to add these as enviroment variables in the Cloudflare dashboard for it to work in production. Or if you don't mind sending through gmail use [nodemailer](https://nodemailer.com/) instead.
-</details>
+This portfolio is open source for learning purposes. If you adapt this design for your own site, please credit Don Michael Ombisi as the original designer. Projects showcased are real works and should not be presented as your own.

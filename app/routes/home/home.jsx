@@ -1,15 +1,12 @@
-import gamestackTexture2Large from '~/assets/gamestack-list-large.jpg';
-import gamestackTexture2Placeholder from '~/assets/gamestack-list-placeholder.jpg';
-import gamestackTexture2 from '~/assets/gamestack-list.jpg';
-import gamestackTextureLarge from '~/assets/gamestack-login-large.jpg';
-import gamestackTexturePlaceholder from '~/assets/gamestack-login-placeholder.jpg';
-import gamestackTexture from '~/assets/gamestack-login.jpg';
-import sliceTextureLarge from '~/assets/slice-app-large.jpg';
-import sliceTexturePlaceholder from '~/assets/slice-app-placeholder.jpg';
-import sliceTexture from '~/assets/slice-app.jpg';
-import sprTextureLarge from '~/assets/spr-lesson-builder-dark-large.jpg';
-import sprTexturePlaceholder from '~/assets/spr-lesson-builder-dark-placeholder.jpg';
-import sprTexture from '~/assets/spr-lesson-builder-dark.jpg';
+import host3TextureLarge from '~/assets/host3-large.jpg';
+import host3TexturePlaceholder from '~/assets/host3-placeholder.jpg';
+import host3Texture from '~/assets/host3.jpg';
+import aura3TextureLarge from '~/assets/aura3-large.jpg';
+import aura3TexturePlaceholder from '~/assets/aura3-placeholder.jpg';
+import aura3Texture from '~/assets/aura3.jpg';
+import aquaHorizonTextureLarge from '~/assets/aqua-horizon-large.jpg';
+import aquaHorizonTexturePlaceholder from '~/assets/aqua-horizon-placeholder.jpg';
+import aquaHorizonTexture from '~/assets/aqua-horizon.jpg';
 import { Footer } from '~/components/footer';
 import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
@@ -41,8 +38,8 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Designer + Developer',
-    description: `Design portfolio of ${config.name} — a product designer working on web & mobile apps with a focus on motion, experience design, and accessibility.`,
+    title: 'Software Engineer + Data Analyst',
+    description: `Portfolio of ${config.name} — a Software Engineer working on web & mobile apps with a focus on full-stack development, data science, and cybersecurity.`,
   });
 };
 
@@ -103,17 +100,17 @@ export const Home = () => {
         sectionRef={projectOne}
         visible={visibleSections.includes(projectOne.current)}
         index={1}
-        title="Designing the future of education"
-        description="Designing a platform to help educators build better online courseware"
+        title="Host3 - Web3 Hosting Platform"
+        description="Decentralized hosting platform built with React, Solidity, and IPFS enabling 99.8% uptime file storage"
         buttonText="View project"
-        buttonLink="/projects/smart-sparrow"
+        buttonLink="/projects.host3"
         model={{
           type: 'laptop',
-          alt: 'Smart Sparrow lesson builder',
+          alt: 'Host3 Web3 Platform',
           textures: [
             {
-              srcSet: `${sprTexture} 1280w, ${sprTextureLarge} 2560w`,
-              placeholder: sprTexturePlaceholder,
+              srcSet: `${host3Texture} 800w, ${host3TextureLarge} 1920w`,
+              placeholder: host3TexturePlaceholder,
             },
           ],
         }}
@@ -124,21 +121,17 @@ export const Home = () => {
         sectionRef={projectTwo}
         visible={visibleSections.includes(projectTwo.current)}
         index={2}
-        title="Video game progress tracking"
-        description="Design and development for a video game tracking app built in React Native"
-        buttonText="View website"
-        buttonLink="https://gamestack.hamishw.com"
+        title="Aura3.0 - AI Therapist"
+        description="Autonomous AI therapist powered by NLP and emotional intelligence with blockchain privacy"
+        buttonText="View project"
+        buttonLink="/projects.aura3"
         model={{
           type: 'phone',
-          alt: 'App login screen',
+          alt: 'Aura3.0 AI Interface',
           textures: [
             {
-              srcSet: `${gamestackTexture} 375w, ${gamestackTextureLarge} 750w`,
-              placeholder: gamestackTexturePlaceholder,
-            },
-            {
-              srcSet: `${gamestackTexture2} 375w, ${gamestackTexture2Large} 750w`,
-              placeholder: gamestackTexture2Placeholder,
+              srcSet: `${aura3Texture} 375w, ${aura3TextureLarge} 750w`,
+              placeholder: aura3TexturePlaceholder,
             },
           ],
         }}
@@ -148,17 +141,17 @@ export const Home = () => {
         sectionRef={projectThree}
         visible={visibleSections.includes(projectThree.current)}
         index={3}
-        title="Biomedical image collaboration"
-        description="Increasing the amount of collaboration in Slice, an app for biomedical imaging"
+        title="Aqua-Horizon - Citizen Science"
+        description="Water quality monitoring platform enabling community-driven environmental reporting and analysis"
         buttonText="View project"
-        buttonLink="/projects/slice"
+        buttonLink="/projects.aqua-horizon"
         model={{
           type: 'laptop',
-          alt: 'Annotating a biomedical image in the Slice app',
+          alt: 'Aqua-Horizon Dashboard',
           textures: [
             {
-              srcSet: `${sliceTexture} 800w, ${sliceTextureLarge} 1920w`,
-              placeholder: sliceTexturePlaceholder,
+              srcSet: `${aquaHorizonTexture} 800w, ${aquaHorizonTextureLarge} 1920w`,
+              placeholder: aquaHorizonTexturePlaceholder,
             },
           ],
         }}

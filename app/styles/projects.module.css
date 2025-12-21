@@ -1,0 +1,265 @@
+/* Critical CSS - Above the fold content */
+.projects {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, var(--background) 0%, var(--background-alt) 100%);
+}
+
+.content {
+  flex: 1;
+  padding: 100px 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.title {
+  margin-bottom: 32px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  opacity: 0.9;
+  max-width: 900px;
+  margin: 0 auto;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+/* Optimized project grid with CSS containment */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 40px;
+  margin-bottom: 100px;
+  contain: layout style paint;
+}
+
+.projectCard {
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: visible;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  contain: layout style paint;
+  will-change: transform;
+}
+
+.projectCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+  transform-origin: left;
+}
+
+.projectCard:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary);
+}
+
+.projectCard:hover::before {
+  transform: scaleX(1);
+}
+
+.projectImage {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  contain: layout paint;
+}
+
+.projectImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease, filter 0.6s ease;
+}
+
+.projectCard:hover .projectImg {
+  transform: scale(1.1);
+  filter: brightness(0.9);
+}
+
+.projectContent {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 300px;
+  contain: layout style;
+}
+
+.projectTitle {
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.projectDescription {
+  flex: 1;
+  margin-bottom: 24px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.projectTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.tag {
+  background: linear-gradient(135deg, var(--background-alt), var(--background));
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.tag:hover {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border-color: var(--primary);
+  transform: translateY(-2px);
+}
+
+.projectActions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  z-index: 10;
+  position: relative;
+  padding-top: 16px;
+}
+
+.projectActions button {
+  min-width: 140px;
+  font-weight: 600;
+  padding: 12px 24px !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.projectActions button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.footer {
+  text-align: center;
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--background-alt) 0%, var(--background) 100%);
+  border-radius: 30px;
+  margin: 0 24px;
+  border: 1px solid var(--border);
+}
+
+.footerText {
+  margin-bottom: 32px;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+/* Optimized responsive design */
+@media (max-width: 1200px) {
+  .projectGrid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    padding: 60px 20px;
+  }
+  
+  .header {
+    margin-bottom: 60px;
+  }
+  
+  .projectGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  
+  .projectCard {
+    border-radius: 16px;
+  }
+  
+  .projectImage {
+    height: 180px;
+  }
+  
+  .projectContent {
+    padding: 24px;
+  }
+  
+  .projectActions {
+    flex-direction: column;
+  }
+  
+  .projectActions button {
+    width: 100%;
+  }
+  
+  .footer {
+    margin: 0 20px;
+    padding: 60px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .projectCard {
+    border-radius: 12px;
+  }
+  
+  .projectImage {
+    height: 160px;
+  }
+  
+  .projectContent {
+    padding: 20px;
+  }
+  
+  .tag {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+  
+  .description {
+    font-size: 1rem;
+  }
+}
