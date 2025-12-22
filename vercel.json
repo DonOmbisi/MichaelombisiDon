@@ -1,1 +1,16 @@
-{"buildCommand": "npm run build", "outputDirectory": "build", "installCommand": "npm install", "framework": "vite"}
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "build/server/index.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "build/server/index.js"
+    }
+  ],
+  "outputDirectory": "build"
+}
