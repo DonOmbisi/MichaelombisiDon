@@ -2,15 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "build/server/index.js",
-      "use": "@vercel/node"
+      "src": "package.json",
+      "use": "@vercel/remix"
     }
   ],
+  "functions": {
+    "build/server/**/*.js": {
+      "runtime": "nodejs20.x"
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "build/server/index.js"
+      "dest": "/build/server/index.js"
     }
-  ],
-  "outputDirectory": "build"
+  ]
 }
