@@ -1,39 +1,20 @@
-__  __  __
-\ \ \ \ \/
- \ \/\ \
-  \/  \/
+/* TEAM */
 
-The humans.txt file explains the team, technology,
-and graphic assets behind this site humanstxt.org.
+Don Michael Ombisi
+Full Stack Developer
+Nairobi, Kenya
 
-_______________________________________________________________________________
+/* SITE */
 
-DESIGNER | デザイナー
+Software portfolio
+donombisi.com
 
-Hamish Williams
-Hand crafted design & web development
+/* SOCIAL */
 
-Design tools:
-Figma
-Photoshop
-Blender
+linkedin.com/in/don-michael-64423b276
+github.com/donombisi
 
-twitter.com/hamishmw
-github.com/hamishmw
+/* THANKS */
 
-_______________________________________________________________________________
-
-TECHNOLOGY | テクノロジー
-
-React
-Remix
-Three.js
-Framer Motion
-
-_______________________________________________________________________________
-
-FONTS | フォント
-
-Gotham
-IPA Gothic Regular
-Hiragino Kaku Gothic W8
+Remix, Three.js, Framer Motion
+Hamish Williams (original portfolio design)

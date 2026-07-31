@@ -1,89 +1,76 @@
-const CACHE_NAME = 'portfolio-v1';
-const STATIC_CACHE = 'static-v1';
-const DYNAMIC_CACHE = 'dynamic-v1';
+const STATIC_CACHE = 'static-v2';
+const DYNAMIC_CACHE = 'dynamic-v2';
 
 const STATIC_ASSETS = [
   '/',
   '/projects',
   '/experience',
+  '/achievements',
+  '/certifications',
   '/resume',
+  '/contact',
   '/favicon.ico',
   '/favicon.svg',
   '/manifest.json',
-  // Critical images
-  '/host3-project.webp',
-  '/aura3-project.webp',
-  '/aqua-horizon-project.webp',
-  '/drug-research-project.webp',
-  '/flood-analyzer-project.webp',
+  '/Don_Michael_Ombisi_Resume.pdf',
 ];
 
-// Install event - cache static assets
-self.addEventListener('install', (event) => {
+self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(STATIC_CACHE)
-      .then((cache) => cache.addAll(STATIC_ASSETS))
-      .then(() => self.skipWaiting())
+    caches.open(STATIC_CACHE).then(cache =>
+      Promise.allSettled(STATIC_ASSETS.map(asset => cache.add(asset)))
+    ).then(() => self.skipWaiting())
   );
 });
 
-// Activate event - clean up old caches
-self.addEventListener('activate', (event) => {
+self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys()
-      .then((cacheNames) => {
-        return Promise.all(
+    caches
+      .keys()
+      .then(cacheNames =>
+        Promise.all(
           cacheNames
-            .filter((cacheName) => cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE)
-            .map((cacheName) => caches.delete(cacheName))
-        );
-      })
+            .filter(cacheName => cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE)
+            .map(cacheName => caches.delete(cacheName))
+        )
+      )
       .then(() => self.clients.claim())
   );
 });
 
-// Fetch event - serve from cache with network fallback
-self.addEventListener('fetch', (event) => {
+self.addEventListener('fetch', event => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Skip non-GET requests and external requests
   if (request.method !== 'GET' || url.origin !== self.location.origin) {
     return;
   }
 
-  // Strategy: Stale While Revalidate for static assets
-  if (STATIC_ASSETS.some(asset => url.pathname === asset)) {
+  if (STATIC_ASSETS.includes(url.pathname)) {
     event.respondWith(
-      caches.open(STATIC_CACHE)
-        .then((cache) => cache.match(request))
-        .then((response) => {
-          const fetchPromise = fetch(request)
-            .then((networkResponse) => {
-              caches.open(STATIC_CACHE)
-                .then((cache) => cache.put(request, networkResponse.clone()));
-              return networkResponse;
-            });
-          return response || fetchPromise;
+      caches.open(STATIC_CACHE).then(cache =>
+        cache.match(request).then(cached => {
+          const networkFetch = fetch(request).then(networkResponse => {
+            if (networkResponse.ok) {
+              cache.put(request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+          return cached || networkFetch;
         })
+      )
     );
     return;
   }
 
-  // Strategy: Network First for dynamic content
   event.respondWith(
     fetch(request)
-      .then((networkResponse) => {
-        // Cache successful responses
+      .then(networkResponse => {
         if (networkResponse.ok) {
-          caches.open(DYNAMIC_CACHE)
-            .then((cache) => cache.put(request, networkResponse.clone()));
+          caches.open(DYNAMIC_CACHE).then(cache => cache.put(request, networkResponse.clone()));
         }
         return networkResponse;
       })
-      .catch(() => {
-        // Fallback to cache if network fails
-        return caches.match(request);
-      })
+      .catch(() => caches.match(request))
   );
 });

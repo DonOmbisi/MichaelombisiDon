@@ -49,10 +49,7 @@ export const links = () => [
   { rel: 'prefetch', href: '/projects', as: 'document' },
   { rel: 'prefetch', href: '/experience', as: 'document' },
   { rel: 'prefetch', href: '/resume', as: 'document' },
-  // Prefetch critical images
-  { rel: 'prefetch', href: '/host3-project.webp', as: 'image' },
-  { rel: 'prefetch', href: '/aura3-project.webp', as: 'image' },
-  { rel: 'prefetch', href: '/aqua-horizon-project.webp', as: 'image' },
+  { rel: 'prefetch', href: '/Don_Michael_Ombisi_Resume.pdf', as: 'document' },
   // DNS prefetch for external domains
   { rel: 'dns-prefetch', href: '//vercel.app' },
   { rel: 'dns-prefetch', href: '//github.com' },

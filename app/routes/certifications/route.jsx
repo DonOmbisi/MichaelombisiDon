@@ -4,117 +4,25 @@ import { Heading } from '~/components/heading';
 import { Section } from '~/components/section';
 import { Text } from '~/components/text';
 import { Transition } from '~/components/transition';
-import { Fragment } from 'react';
+import { certifications } from '~/data/portfolio';
 import styles from './certifications.module.css';
-
-const certifications = [
-  {
-    title: 'Ethical Hacker Certification',
-    issuer: 'Cisco',
-    category: 'Cybersecurity',
-    year: '2024'
-  },
-  {
-    title: 'Junior Cybersecurity Analyst',
-    issuer: 'Cisco',
-    category: 'Cybersecurity',
-    year: '2024'
-  },
-  {
-    title: 'Cyber Threat Management',
-    issuer: 'Cisco',
-    category: 'Cybersecurity',
-    year: '2024'
-  },
-  {
-    title: 'Network Defense',
-    issuer: 'Cisco',
-    category: 'Cybersecurity',
-    year: '2024'
-  },
-  {
-    title: 'AI Solutions on Cisco Infrastructure Essentials',
-    issuer: 'Cisco',
-    category: 'AI/ML',
-    year: '2024'
-  },
-  {
-    title: 'Applied Data Science Lab',
-    issuer: 'WorldQuant University',
-    category: 'Data Science',
-    year: '2024'
-  },
-  {
-    title: 'Quantum Computing - Basics of Quantum Information',
-    issuer: 'IBM',
-    category: 'Quantum Computing',
-    year: '2024'
-  },
-  {
-    title: 'Quantum Business Foundations',
-    issuer: 'IBM',
-    category: 'Quantum Computing',
-    year: '2024'
-  },
-  {
-    title: 'Java Programming',
-    issuer: 'Oracle',
-    category: 'Programming',
-    year: '2024'
-  },
-  {
-    title: 'Golang Development',
-    issuer: 'Go',
-    category: 'Programming',
-    year: '2024'
-  },
-  {
-    title: 'JavaScript Advanced',
-    issuer: 'JavaScript',
-    category: 'Programming',
-    year: '2024'
-  },
-  {
-    title: 'SQL Advanced',
-    issuer: 'SQL',
-    category: 'Database',
-    year: '2024'
-  },
-  {
-    title: 'Frontend Developer',
-    issuer: 'Frontend',
-    category: 'Web Development',
-    year: '2024'
-  },
-  {
-    title: 'Software Engineer',
-    issuer: 'Software Engineering',
-    category: 'Software Development',
-    year: '2024'
-  },
-  {
-    title: 'Networking Basics',
-    issuer: 'Cisco',
-    category: 'Networking',
-    year: '2024'
-  },
-  {
-    title: 'Network Devices and Configurations',
-    issuer: 'Cisco',
-    category: 'Networking',
-    year: '2024'
-  },
-  {
-    title: 'Microsoft Office Specialist',
-    issuer: 'ICDL Africa',
-    category: 'Office Productivity',
-    year: '2023'
-  }
-];
 
 const categories = [...new Set(certifications.map(cert => cert.category))];
 
-const CertificationCard = ({ certification, index }) => (
+const categoryIcons = {
+  'Cybersecurity': '🛡️',
+  'Networking': '🌐',
+  'AI/ML': '🧠',
+  'Programming': '💻',
+  'Database': '🗄️',
+  'Web Development': '🕸️',
+  'Software Development': '⚙️',
+  'Office Productivity': '📊',
+  'Data Science': '📈',
+  'Quantum Computing': '⚛️'
+};
+
+const CertificationCard = ({ certification }) => (
   <div className={styles.card}>
     <div className={styles.cardHeader}>
       <Heading level={4} className={styles.certTitle}>
@@ -123,7 +31,10 @@ const CertificationCard = ({ certification, index }) => (
       <Text className={styles.issuer}>{certification.issuer}</Text>
     </div>
     <div className={styles.cardFooter}>
-      <span className={styles.category}>{certification.category}</span>
+      <span className={styles.categoryBadge}>
+        <span className={styles.categoryIcon}>{categoryIcons[certification.category] || '🎓'}</span>
+        {certification.category}
+      </span>
       <span className={styles.year}>{certification.year}</span>
     </div>
   </div>
@@ -139,44 +50,50 @@ export default function Certifications() {
           </Heading>
           <Text className={styles.description} size="l">
             Professional certifications spanning cybersecurity, data science, quantum computing,
-            and software development from industry-leading organizations.
+            programming, and networking from Cisco, IBM, HackerRank, and WorldQuant University.
           </Text>
         </div>
-        
+
         <div className={styles.categories}>
-          {categories.map((category, index) => (
-            <Transition key={category} in timeout={{ enter: 200 * index }}>
-              {({ visible, nodeRef }) => (
-                <div ref={nodeRef} className={styles.categorySection} data-visible={visible}>
-                  <Heading level={3} className={styles.categoryTitle}>
-                    {category}
-                  </Heading>
-                  <div className={styles.certGrid}>
-                    {certifications
-                      .filter(cert => cert.category === category)
-                      .map((cert, certIndex) => (
-                        <Transition key={certIndex} in timeout={{ enter: 100 * certIndex }}>
+          {categories.map((category, index) => {
+            const categoryCerts = certifications.filter(cert => cert.category === category);
+            return (
+              <Transition key={category} in timeout={{ enter: Math.min(200 * index, 800) }}>
+                {({ visible, nodeRef }) => (
+                  <div ref={nodeRef} className={styles.categorySection} data-visible={visible}>
+                    <div className={styles.categoryHeader}>
+                      <Heading level={3} className={styles.categoryTitle}>
+                        <span className={styles.categoryIconHeader}>{categoryIcons[category] || '🎓'}</span>
+                        {category}
+                      </Heading>
+                      <span className={styles.certCount}>{categoryCerts.length} Credential{categoryCerts.length !== 1 ? 's' : ''}</span>
+                    </div>
+                    
+                    <div className={styles.certGrid}>
+                      {categoryCerts.map((cert, certIndex) => (
+                        <Transition key={cert.title} in timeout={{ enter: 100 * certIndex }}>
                           {({ visible: certVisible, nodeRef: certNodeRef }) => (
                             <div
                               ref={certNodeRef}
                               className={styles.certItem}
                               data-visible={certVisible}
                             >
-                              <CertificationCard certification={cert} index={certIndex} />
+                              <CertificationCard certification={cert} />
                             </div>
                           )}
                         </Transition>
                       ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </Transition>
-          ))}
+                )}
+              </Transition>
+            );
+          })}
         </div>
-        
+
         <div className={styles.cta}>
-          <Button secondary href="/contact">
-            Discuss my qualifications
+          <Button secondary href="/achievements">
+            View achievements
           </Button>
         </div>
       </Section>

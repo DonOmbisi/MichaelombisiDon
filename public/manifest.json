@@ -1,6 +1,7 @@
 {
-  "short_name": "Hamish Williams",
-  "name": "Design Portfolio of Hamish Williams",
+  "short_name": "Don Ombisi",
+  "name": "Don Michael Ombisi — Portfolio",
+  "description": "Full Stack Developer portfolio showcasing Web3, AI, quant finance, and quantum computing projects.",
   "icons": [
     {
       "src": "shortcut.png",

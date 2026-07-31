@@ -1,1 +1,19 @@
-{"name": "Don Michael Ombisi", "role": "Software Engineer", "disciplines": ["Full Stack Developer", "Data Analyst", "Cybersecurity", "ML Engineer", "Systems Developer"], "url": "https://donombisi.com", "bluesky": "donombisi.com", "figma": "@donombisi", "github": "donombisi", "repo": "https://github.com/donombisi/portfolio", "ascii": "__  __  __\n\\ \\ \\ \\ \\/\n \\ \\/\\ \\\n  \\/  \\/\n"}
+{
+  "name": "Don Michael Ombisi",
+  "role": "Full Stack Developer",
+  "disciplines": [
+    "Full Stack Developer",
+    "AI & Analytics",
+    "Cybersecurity",
+    "Financial Analytics",
+    "Quantum Computing"
+  ],
+  "url": "https://donombisi.com",
+  "bluesky": "donombisi.com",
+  "figma": "@donombisi",
+  "github": "donombisi",
+  "repo": "https://github.com/donombisi/portfolio",
+  "email": "ombisimichael@gmail.com",
+  "phone": "+254 115 323 486",
+  "ascii": "__  __  __\n\\ \\ \\ \\ \\/\n \\ \\/\\ \\\n  \\/  \\/\n"
+}
