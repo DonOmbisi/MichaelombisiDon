@@ -114,14 +114,44 @@ export const Contact = () => {
                   <a href={`mailto:${contact.email}`} className={styles.contactLink}>
                     ✉️ {contact.email}
                   </a>
-                  <a 
-                    href={`https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`} 
+                  <a
+                    href={`https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`}
                     className={styles.contactLink}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     💬 WhatsApp
                   </a>
+                  {contact.linkedin && (
+                    <a
+                      href={contact.linkedin}
+                      className={styles.contactLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      🔗 LinkedIn
+                    </a>
+                  )}
+                  {contact.github && (
+                    <a
+                      href={contact.github}
+                      className={styles.contactLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      💻 GitHub
+                    </a>
+                  )}
+                  {contact.portfolio && (
+                    <a
+                      href={contact.portfolio}
+                      className={styles.contactLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      🌐 Portfolio
+                    </a>
+                  )}
                 </div>
               </div>
 

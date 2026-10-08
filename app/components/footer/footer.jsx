@@ -14,9 +14,16 @@ export const Footer = ({ className }) => (
       <Link secondary className={styles.link} href={`https://wa.me/${contact.phone.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer">
         WhatsApp
       </Link>
-      <Link secondary className={styles.link} href="https://github.com/donombisi" target="_blank" rel="noopener noreferrer">
-        GitHub
-      </Link>
+      {contact.github && (
+        <Link secondary className={styles.link} href={contact.github} target="_blank" rel="noopener noreferrer">
+          GitHub
+        </Link>
+      )}
+      {contact.linkedin && (
+        <Link secondary className={styles.link} href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </Link>
+      )}
     </div>
     <Text size="s" align="center">
       <span className={styles.date}>

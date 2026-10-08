@@ -7,7 +7,7 @@ import { contact, education, professionalSummary } from '~/data/portfolio';
 import { baseMeta } from '~/utils/meta';
 import styles from '~/styles/resume.module.css';
 
-const RESUME_PATH = '/Don_Michael_Ombisi_Resume.pdf';
+const RESUME_PATH = '/Don_Michael_Resume.pdf';
 
 export const meta = () => {
   return baseMeta({
@@ -38,6 +38,30 @@ export default function Resume() {
             <Text size="s" className={styles.summaryLine}>
               <strong>Contact:</strong> {contact.email} · {contact.phone}
             </Text>
+            {contact.linkedin && (
+              <Text size="s" className={styles.summaryLine}>
+                <strong>LinkedIn:</strong>{' '}
+                <a href={contact.linkedin} target="_blank" rel="noopener noreferrer">
+                  {contact.linkedin}
+                </a>
+              </Text>
+            )}
+            {contact.github && (
+              <Text size="s" className={styles.summaryLine}>
+                <strong>GitHub:</strong>{' '}
+                <a href={contact.github} target="_blank" rel="noopener noreferrer">
+                  {contact.github}
+                </a>
+              </Text>
+            )}
+            {contact.portfolio && (
+              <Text size="s" className={styles.summaryLine}>
+                <strong>Portfolio:</strong>{' '}
+                <a href={contact.portfolio} target="_blank" rel="noopener noreferrer">
+                  {contact.portfolio}
+                </a>
+              </Text>
+            )}
           </div>
 
           <div className={styles.actions}>

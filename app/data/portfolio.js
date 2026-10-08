@@ -18,7 +18,7 @@ export const experiences = [
     title: 'Electronics Engineer Intern',
     company: 'Spairally',
     location: 'Remote',
-    period: 'January 2026 – May 2026',
+    period: 'January 2026 – March 2026',
     color: '#7c3aed',
     responsibilities: [
       'Engineer RF-based sensing modules leveraging Wi-Fi signal analysis for non-intrusive threat detection',
@@ -41,8 +41,8 @@ export const experiences = [
   {
     title: 'FullStack Developer',
     company: 'Safaridesk',
-    location: 'Nairobi, Kenya',
-    period: 'November 2025 – April 2026',
+    location: 'Remote',
+    period: 'December 2025 – April 2026',
     color: '#059669',
     responsibilities: [
       'Resolved critical bugs in the Notifications Engine/Module, restoring reliable delivery across user segments',
@@ -68,7 +68,7 @@ export const experiences = [
     title: 'IT Administrator',
     company: 'Kenyariri & Associates (Law Firm)',
     location: 'Nairobi, Kenya',
-    period: 'April 2025 – July 2025',
+    period: 'April 2025 – September 2025',
     color: '#dc2626',
     responsibilities: [
       'Implemented and configured POS systems to streamline transactions and boost operational efficiency',
@@ -110,10 +110,10 @@ export const experiences = [
     tech: ['Python', 'OWASP', 'Networking', 'Security', 'Automation'],
   },
   {
-    title: 'Android Developer',
+    title: 'Android Developer (Contract)',
     company: 'FreeCopy Pvt. Ltd',
     location: 'Remote',
-    period: 'January 2024 – April 2024',
+    period: 'November 2023 – March 2024',
     color: '#059669',
     responsibilities: [
       'Migrated backend to Firebase, reducing latency by 35%',
@@ -140,7 +140,7 @@ export const experiences = [
     title: 'Android & ML Developer',
     company: 'Muito Incorporation',
     location: 'Remote',
-    period: 'January 2023 – April 2023',
+    period: 'January 2022 – February 2023',
     color: '#7c3aed',
     responsibilities: [
       'Implemented facial detection and OCR algorithms with secure data handling protocols',
@@ -162,6 +162,8 @@ export const certifications = [
   { title: 'Network Devices and Configurations', issuer: 'Cisco', category: 'Networking', year: '2024' },
   { title: 'AI Solutions on Cisco Infrastructure Essentials (DCAIE)', issuer: 'Cisco', category: 'AI/ML', year: '2024' },
   { title: 'AI In Cybersecurity', issuer: 'Industry', category: 'Cybersecurity', year: '2024' },
+  { title: 'Advanced C Programming', issuer: 'MicroChip Technology', category: 'Programming', year: '2024' },
+  { title: 'Data Science', issuer: 'Various', category: 'Data Science', year: '2024' },
   { title: 'Java', issuer: 'HackerRank', category: 'Programming', year: '2024' },
   { title: 'Golang', issuer: 'HackerRank', category: 'Programming', year: '2024' },
   { title: 'JavaScript', issuer: 'HackerRank', category: 'Programming', year: '2024' },
@@ -209,6 +211,17 @@ export const achievements = [
     category: 'Community',
     icon: '💻',
     impact: 'Open-source contributions across multiple repositories',
+  },
+  {
+    title: 'Elastic Hashing in Practice: Multi-Slot Bucket Hashing for Improved Lossless Compression',
+    organization: 'Independent Research',
+    year: '2026',
+    description:
+      'Published research on elastic hashing concepts applied to LZ4-style compression with improved ratios on benchmark datasets. DOI: 10.5281/zenodo.21874093',
+    highlight: 'Peer-reviewed Publication',
+    category: 'Publication',
+    icon: '📄',
+    impact: 'Contributed to compression algorithm research',
   },
 ];
 
@@ -450,7 +463,7 @@ export const stats = {
 };
 
 export const professionalSummary =
-  'Full Stack Developer with extensive experience building scalable applications, implementing cybersecurity solutions, and developing machine learning models. Skilled in secure software development, cloud infrastructure, data science, and financial analytics.';
+  'Software Engineer with extensive experience building scalable applications, implementing cybersecurity solutions, and developing machine learning models. Skilled in secure software development, cloud infrastructure, data science, and financial analytics. Track record of delivering measurable performance improvements across fintech, government, and enterprise environments.';
 
 export const education = {
   institution: 'Catholic University of Eastern Africa',
@@ -461,4 +474,7 @@ export const education = {
 export const contact = {
   email: 'ombisimichael@gmail.com',
   phone: '+254 115 323 486',
+  linkedin: 'https://linkedin.com/in/donombisi',
+  github: 'https://github.com/donombisi',
+  portfolio: 'https://donombisi.com',
 };

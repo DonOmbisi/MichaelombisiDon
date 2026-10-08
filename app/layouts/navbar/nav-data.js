@@ -30,12 +30,12 @@ export const navLinks = [
 export const socialLinks = [
   {
     label: 'LinkedIn',
-    url: 'https://www.linkedin.com/in/don-michael-64423b276/',
+    url: 'https://linkedin.com/in/donombisi',
     icon: 'linkedin',
   },
   {
     label: 'Github',
-    url: `https://github.com/${config.github}`,
+    url: 'https://github.com/donombisi',
     icon: 'github',
   },
 ];

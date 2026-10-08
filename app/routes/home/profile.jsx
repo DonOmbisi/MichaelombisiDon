@@ -22,7 +22,7 @@ const ProfileText = ({ visible, titleId }) => (
       <DecoderText text="Hi there" start={visible} delay={500} />
     </Heading>
     <Text className={styles.description} data-visible={visible} size="l" as="p">
-      I'm Don Michael Ombisi, a Full Stack Developer based in Nairobi, Kenya. I build scalable
+      I'm Don Michael Ombisi, a Software Engineer based in Nairobi, Kenya. I build scalable
       applications, implement cybersecurity solutions, and develop machine learning models across
       fintech, government, and enterprise environments. Explore my{' '}
       <Link href="/projects">projects</Link>, <Link href="/experience">experience</Link>, or{' '}
