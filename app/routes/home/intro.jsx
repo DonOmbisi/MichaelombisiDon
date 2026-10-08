@@ -11,6 +11,7 @@ import { Suspense, lazy, useEffect, useState } from 'react';
 import { cssProps } from '~/utils/style';
 import config from '~/config.json';
 import { useHydrated } from '~/hooks/useHydrated';
+import { ProfileCard } from './profile-card';
 import styles from './intro.module.css';
 
 const DisplacementSphere = lazy(() =>
@@ -29,6 +30,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
   const titleId = `${id}-title`;
   const scrollToHash = useScrollToHash();
   const isHydrated = useHydrated();
+  const [cardVisible, setCardVisible] = useState(false);
 
   useInterval(
     () => {
@@ -44,6 +46,13 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
       setDisciplineIndex(0);
     }
   }, [theme, prevTheme]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setCardVisible(true);
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleScrollClick = event => {
     event.preventDefault();
@@ -111,6 +120,7 @@ export function Intro({ id, sectionRef, scrollIndicatorHidden, ...rest }) {
                 </div>
               </Heading>
             </header>
+            <ProfileCard visible={cardVisible} />
             <RouterLink
               to="/#project-1"
               className={styles.scrollIndicator}

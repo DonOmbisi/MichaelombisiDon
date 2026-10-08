@@ -49,11 +49,17 @@ export const links = () => [
   { rel: 'prefetch', href: '/projects', as: 'document' },
   { rel: 'prefetch', href: '/experience', as: 'document' },
   { rel: 'prefetch', href: '/resume', as: 'document' },
+  { rel: 'prefetch', href: '/contact', as: 'document' },
   { rel: 'prefetch', href: '/Don_Michael_Ombisi_Resume.pdf', as: 'document' },
   // DNS prefetch for external domains
   { rel: 'dns-prefetch', href: '//vercel.app' },
   { rel: 'dns-prefetch', href: '//github.com' },
   { rel: 'dns-prefetch', href: '//render.com' },
+  // Preconnect for performance
+  { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+  { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossOrigin: '' },
+  // Service Worker registration
+  { rel: 'service-worker', href: '/sw.js' },
 ];
 
 export const loader = async ({ request }) => {
@@ -108,6 +114,18 @@ export default function App() {
       `${config.ascii}\n`,
       `Taking a peek huh? Check out the source code: ${config.repo}\n\n`
     );
+
+    // Register service worker
+    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+      navigator.serviceWorker.register('/sw.js').then(
+        registration => {
+          console.log('Service Worker registered with scope:', registration.scope);
+        },
+        error => {
+          console.error('Service Worker registration failed:', error);
+        }
+      );
+    }
   }, []);
 
   return (

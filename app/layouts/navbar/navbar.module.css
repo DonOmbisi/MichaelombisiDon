@@ -9,9 +9,9 @@
     padding: 0;
     width: var(--space2XL);
     position: fixed;
-    top: var(--spaceOuter);
+    top: var(--spaceL);
     left: var(--spaceOuter);
-    bottom: var(--spaceOuter);
+    bottom: var(--spaceL);
     z-index: var(--zIndex4);
     isolation: isolate;
 
@@ -27,11 +27,59 @@
   .logo {
     display: flex;
     position: relative;
-    padding: var(--spaceS) var(--spaceS) var(--spaceL);
+    padding: var(--spaceS) var(--spaceS) var(--spaceM);
     z-index: var(--zIndex2);
 
     @media (--mediaMobile) {
       padding-bottom: var(--spaceS);
+    }
+  }
+
+  .horizontalNav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spaceS);
+    padding: var(--spaceS) 0;
+    border-bottom: 1px solid rgba(var(--text-rgb), 0.1);
+    margin-bottom: var(--spaceM);
+
+    @media (--mediaMobile), (--mediaMobileLS) {
+      display: none;
+    }
+  }
+
+  .horizontalLink {
+    font-size: calc((14 / 16) * 1rem);
+    font-weight: var(--fontWeightMedium);
+    color: color-mix(in lab, var(--text) 70%, transparent);
+    text-decoration: none;
+    transition: color var(--durationS) ease 0.1s;
+    position: relative;
+    padding: var(--spaceXS) var(--spaceS);
+    text-align: left;
+
+    &:hover,
+    &:active,
+    &[aria-current='page'] {
+      color: var(--textBody);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transform: translateY(-50%);
+      transition: width var(--durationS) ease;
+    }
+
+    &:hover::after,
+    &:active::after,
+    &[aria-current='page']::after {
+      width: calc(100% - var(--spaceM));
     }
   }
 
@@ -230,6 +278,20 @@
     &[data-visible='true'] {
       opacity: 1;
       transform: none;
+    }
+  }
+
+  .mobileNavDivider {
+    width: 80%;
+    height: 1px;
+    background: rgba(var(--text-rgb), 0.2);
+    margin: var(--spaceM) auto;
+    opacity: 0;
+    transition: opacity var(--durationS) ease;
+    transition-delay: 150ms;
+
+    &[data-visible='true'] {
+      opacity: 1;
     }
   }
 }

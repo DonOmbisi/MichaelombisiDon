@@ -1,0 +1,107 @@
+.container {
+  position: fixed;
+  bottom: var(--spaceXL);
+  right: var(--spaceXL);
+  z-index: var(--zIndex3);
+  pointer-events: none;
+}
+
+.button {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: var(--spaceS);
+  padding: var(--spaceM) var(--spaceL);
+  background: rgba(var(--background-rgb), 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: var(--fontWeightMedium);
+  font-size: calc((14 / 16) * 1rem);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.container[data-status='entered'] .button {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.container[data-theme='light'] .button {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--accent);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.button:hover .icon {
+  transform: translateX(2px);
+}
+
+.text {
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.button:hover .text {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .container {
+    bottom: var(--spaceL);
+    right: var(--spaceL);
+  }
+
+  .button {
+    padding: var(--spaceM);
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    justify-content: center;
+  }
+
+  .text {
+    display: none;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .button:hover .icon {
+    transform: none;
+  }
+}

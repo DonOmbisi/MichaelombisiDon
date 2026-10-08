@@ -111,7 +111,17 @@
   min-height: 600px;
   border: none;
   border-radius: 8px;
-  background: transparent;
+  background: rgba(255, 255, 255, 0.95);
+  display: block;
+}
+
+.pdfViewer:-moz-only-whitespace {
+  display: none;
+}
+
+/* Fallback for browsers that don't support iframe PDF */
+.pdfViewer:not([src]) {
+  display: none;
 }
 
 .previewText {

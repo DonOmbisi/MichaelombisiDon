@@ -4,10 +4,17 @@ export const navLinks = [
   {
     label: 'Projects',
     pathname: '/projects',
+    featured: true,
   },
   {
     label: 'Experience',
     pathname: '/experience',
+    featured: true,
+  },
+  {
+    label: 'Contact',
+    pathname: '/contact',
+    featured: true,
   },
   {
     label: 'Achievements',
@@ -20,10 +27,6 @@ export const navLinks = [
   {
     label: 'Resume',
     pathname: '/resume',
-  },
-  {
-    label: 'Contact',
-    pathname: '/contact',
   },
 ];
 

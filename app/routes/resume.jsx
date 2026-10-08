@@ -7,7 +7,7 @@ import { contact, education, professionalSummary } from '~/data/portfolio';
 import { baseMeta } from '~/utils/meta';
 import styles from '~/styles/resume.module.css';
 
-const RESUME_PATH = '/Don_Michael_Resume.pdf';
+const RESUME_PATH = '/Don_Michael_Ombisi_Resume.pdf';
 
 export const meta = () => {
   return baseMeta({
@@ -79,16 +79,21 @@ export default function Resume() {
           </div>
 
           <div className={styles.preview}>
-            <object
+            <iframe
               className={styles.pdfViewer}
-              data={RESUME_PATH}
-              type="application/pdf"
+              src={RESUME_PATH}
+              title="Resume PDF"
               aria-label="Resume PDF preview"
+              loading="lazy"
             >
               <Text className={styles.previewText}>
-                Your browser does not support inline PDF preview. Use the download button above.
+                Your browser does not support inline PDF preview.{' '}
+                <a href={RESUME_PATH} target="_blank" rel="noopener noreferrer">
+                  Open in new tab
+                </a>{' '}
+                or download above.
               </Text>
-            </object>
+            </iframe>
           </div>
         </div>
 

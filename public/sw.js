@@ -1,5 +1,6 @@
-const STATIC_CACHE = 'static-v2';
-const DYNAMIC_CACHE = 'dynamic-v2';
+const STATIC_CACHE = 'static-v3';
+const DYNAMIC_CACHE = 'dynamic-v3';
+const IMAGE_CACHE = 'image-v3';
 
 const STATIC_ASSETS = [
   '/',
@@ -30,7 +31,11 @@ self.addEventListener('activate', event => {
       .then(cacheNames =>
         Promise.all(
           cacheNames
-            .filter(cacheName => cacheName !== STATIC_CACHE && cacheName !== DYNAMIC_CACHE)
+            .filter(cacheName =>
+              cacheName !== STATIC_CACHE &&
+              cacheName !== DYNAMIC_CACHE &&
+              cacheName !== IMAGE_CACHE
+            )
             .map(cacheName => caches.delete(cacheName))
         )
       )
@@ -46,6 +51,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Cache static assets with stale-while-revalidate
   if (STATIC_ASSETS.includes(url.pathname)) {
     event.respondWith(
       caches.open(STATIC_CACHE).then(cache =>
@@ -63,6 +69,47 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Cache images aggressively
+  if (url.pathname.match(/\.(jpg|jpeg|png|webp|svg|ico)$/)) {
+    event.respondWith(
+      caches.open(IMAGE_CACHE).then(cache =>
+        cache.match(request).then(cached => {
+          if (cached) {
+            return cached;
+          }
+          return fetch(request).then(networkResponse => {
+            if (networkResponse.ok) {
+              cache.put(request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        })
+      )
+    );
+    return;
+  }
+
+  // Cache 3D models
+  if (url.pathname.match(/\.glb$/)) {
+    event.respondWith(
+      caches.open(IMAGE_CACHE).then(cache =>
+        cache.match(request).then(cached => {
+          if (cached) {
+            return cached;
+          }
+          return fetch(request).then(networkResponse => {
+            if (networkResponse.ok) {
+              cache.put(request, networkResponse.clone());
+            }
+            return networkResponse;
+          });
+        })
+      )
+    );
+    return;
+  }
+
+  // Network first for dynamic content
   event.respondWith(
     fetch(request)
       .then(networkResponse => {

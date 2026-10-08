@@ -38,8 +38,8 @@ export const links = () => {
 
 export const meta = () => {
   return baseMeta({
-    title: 'Full Stack Developer + AI & Analytics',
-    description: `Portfolio of ${config.name} — Full Stack Developer specializing in scalable applications, cybersecurity, data science, and financial analytics.`,
+    title: 'Software Engineer + AI & Analytics',
+    description: `Portfolio of ${config.name} — Software Engineer specializing in scalable applications, cybersecurity, data science, and financial analytics.`,
   });
 };
 

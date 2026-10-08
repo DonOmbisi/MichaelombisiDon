@@ -154,8 +154,24 @@ export const Navbar = () => {
       </RouterLink>
       <NavToggle onClick={() => setMenuOpen(!menuOpen)} menuOpen={menuOpen} />
       <nav className={styles.nav}>
+        <div className={styles.horizontalNav}>
+          {navLinks.filter(link => link.featured).map(({ label, pathname }) => (
+            <RouterLink
+              unstable_viewTransition
+              prefetch="intent"
+              to={pathname}
+              key={label}
+              data-navbar-item
+              className={styles.horizontalLink}
+              aria-current={getCurrent(pathname)}
+              onClick={handleNavItemClick}
+            >
+              {label}
+            </RouterLink>
+          ))}
+        </div>
         <div className={styles.navList}>
-          {navLinks.map(({ label, pathname }) => (
+          {navLinks.filter(link => !link.featured).map(({ label, pathname }) => (
             <RouterLink
               unstable_viewTransition
               prefetch="intent"
@@ -175,7 +191,7 @@ export const Navbar = () => {
       <Transition unmount in={menuOpen} timeout={msToNum(tokens.base.durationL)}>
         {({ visible, nodeRef }) => (
           <nav className={styles.mobileNav} data-visible={visible} ref={nodeRef}>
-            {navLinks.map(({ label, pathname }, index) => (
+            {navLinks.filter(link => link.featured).map(({ label, pathname }, index) => (
               <RouterLink
                 unstable_viewTransition
                 prefetch="intent"
@@ -188,6 +204,26 @@ export const Navbar = () => {
                 style={cssProps({
                   transitionDelay: numToMs(
                     Number(msToNum(tokens.base.durationS)) + index * 50
+                  ),
+                })}
+              >
+                {label}
+              </RouterLink>
+            ))}
+            <div className={styles.mobileNavDivider} data-visible={visible} />
+            {navLinks.filter(link => !link.featured).map(({ label, pathname }, index) => (
+              <RouterLink
+                unstable_viewTransition
+                prefetch="intent"
+                to={pathname}
+                key={label}
+                className={styles.mobileNavLink}
+                data-visible={visible}
+                aria-current={getCurrent(pathname)}
+                onClick={handleMobileNavClick}
+                style={cssProps({
+                  transitionDelay: numToMs(
+                    Number(msToNum(tokens.base.durationS)) + (index + 3) * 50
                   ),
                 })}
               >
